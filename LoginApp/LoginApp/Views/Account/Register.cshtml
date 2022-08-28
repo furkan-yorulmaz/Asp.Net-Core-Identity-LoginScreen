@@ -1,0 +1,53 @@
+﻿@using LoginApp.Models
+@model RegisterModel
+
+<div class="row">
+    <div class="col-md-6 m-auto p-3 rounded border bg-light">
+        <h3>Hesap Oluştur</h3>
+        <hr />
+        <form asp-controller="Account" asp-action="Register" method="POST">
+            @*<div asp-validation-summary="All" class="text-danger"></div>*@
+            @if (TempData["message"] != null)
+            {
+                <div class="alert alert-warning mb-3" role="alert">
+                    @TempData["message"]
+                </div>
+            }
+            <div class="row mb-3">
+                <div class="col">
+                    <label asp-for="FirstName" class="form-label">Ad</label>
+                    <input class="form-control" asp-for="FirstName">
+                </div>
+                <div class="col">
+                    <label asp-for="LastName" class="form-label">Soyad</label>
+                    <input class="form-control" asp-for="LastName">
+                </div>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input class="form-control" asp-for="Email">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="UserName" class="form-label">Kullanıcı Adı</label>
+                <input class="form-control" asp-for="UserName">
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label">Şifre</label>
+                <input class="form-control" asp-for="Password">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="RePassword" class="form-label">Şifre Tekrar</label>
+                <input class="form-control" asp-for="RePassword">
+                <span asp-validation-for="RePassword" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success w-100">Oluştur</button>
+            </div>
+        </form>
+    </div>
+</div>

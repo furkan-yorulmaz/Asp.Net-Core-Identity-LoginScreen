@@ -1,0 +1,36 @@
+﻿@using LoginApp.Models
+@model LoginModel
+
+<div class="row">
+    <div class="col-md-4 m-auto p-3 rounded border bg-light">
+        <h3>Giriş Yap</h3>
+        <hr />
+        <form asp-controller="Account" asp-action="Login" method="POST">
+            <input type="hidden" name="ReturnUrl" value="@Model.ReturnUrl">
+            @*<div asp-validation-summary="All" class="text-danger"></div>*@
+            @if (TempData["message"] != null)
+            {
+                <div class="alert alert-warning mb-3" role="alert">
+                    @TempData["message"]
+                </div>
+            }
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input class="form-control" asp-for="Email">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label">Şifre</label>
+                <input class="form-control" asp-for="Password">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success w-100 mb-1">Giriş Yap</button>
+                <a asp-controller="Account" asp-action="Register" class="btn btn-primary w-100">Hesap Oluştur</a>
+            </div>
+        </form>
+        <div>
+            <small>Giriş yapamıyor musun? <a asp-controller="Account" asp-action="ForgotPassword" class="text-decoration-none">Yardım Al</a></small>
+        </div>
+    </div>
+</div>
